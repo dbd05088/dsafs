@@ -1,0 +1,421 @@
+Use GPU: 0 for training
+=> creating model 'resnet50'
+batchsize 32
+DistributedDataParallel(
+  (module): SimSiam(
+    (encoder): ResNet(
+      (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+      (bn1): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+      (layer1): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (layer2): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (3): Bottleneck(
+          (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (layer3): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (3): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (4): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (5): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (layer4): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+      (fc): Sequential(
+        (0): Linear(in_features=2048, out_features=2048, bias=False)
+        (1): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU(inplace=True)
+        (3): Linear(in_features=2048, out_features=2048, bias=False)
+        (4): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): ReLU(inplace=True)
+        (6): Linear(in_features=2048, out_features=2048, bias=True)
+        (7): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+      )
+    )
+    (predictor): Sequential(
+      (0): Linear(in_features=2048, out_features=512, bias=False)
+      (1): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): Linear(in_features=512, out_features=2048, bias=True)
+    )
+  )
+)
+=> no checkpoint found at './checkpoint'
+traindir ./weight_0.914
+base_dataset
+3506
+i 0 j 0
+cos_p 1.0 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3286772707.jpg', 0)
+i 0 j 1
+cos_p 0.8738746843112465 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3286773249.jpg', 0)
+i 0 j 2
+cos_p -0.020509374493112884 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3287135921.jpg', 0)
+i 0 j 3
+cos_p 0.03458889300191486 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3287136491.jpg', 0)
+i 0 j 4
+cos_p 0.01612706875783264 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3287136871.jpg', 0)
+i 0 j 5
+cos_p 0.27437310743911764 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3287485515.jpg', 0)
+i 0 j 6
+cos_p 0.012084471944127703 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3287954910.jpg', 0)
+i 0 j 7
+cos_p -0.03010787647436991 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3287955114.jpg', 0)
+i 0 j 8
+cos_p 0.04468107750537001 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3287955546.jpg', 0)
+i 0 j 9
+cos_p 0.20705030219304837 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288303868.jpg', 0)
+i 0 j 10
+cos_p 0.36394490535322405 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288304064.jpg', 0)
+i 0 j 11
+cos_p 0.28473363975534055 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288304274.jpg', 0)
+i 0 j 12
+cos_p 0.34081277072787436 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288304496.jpg', 0)
+i 0 j 13
+cos_p 0.23135874083418334 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288304674.jpg', 0)
+i 0 j 14
+cos_p 0.07321975108030795 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288623122.jpg', 0)
+i 0 j 15
+cos_p 0.04244321323282231 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288623126.jpg', 0)
+i 0 j 16
+cos_p 0.0419776602840298 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288623130.jpg', 0)
+i 0 j 17
+cos_p 0.059984044265749596 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288623140.jpg', 0)
+i 0 j 18
+cos_p 0.054053492499537 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288623144.jpg', 0)
+i 0 j 19
+cos_p 0.06428056060222873 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288623148.jpg', 0)
+i 0 j 20
+cos_p 0.024792525462010377 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288778900.jpg', 0)
+i 0 j 21
+cos_p 0.024065262332006777 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288778904.jpg', 0)
+i 0 j 22
+cos_p 0.05937656250863803 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3288778910.jpg', 0)
+i 0 j 23
+cos_p -0.027471866068479168 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371355187.jpg', 0)
+i 0 j 24
+cos_p 0.0004537182928801601 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371532517.jpg', 0)
+i 0 j 25
+cos_p 0.02322773209246388 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371537555.jpg', 0)
+i 0 j 26
+cos_p -0.0478965200895675 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371546831.jpg', 0)
+i 0 j 27
+cos_p -0.02025491709658867 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371550507.jpg', 0)
+i 0 j 28
+cos_p -0.0033943782457087567 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371553829.jpg', 0)
+i 0 j 29
+cos_p -0.03444736942004062 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371555457.jpg', 0)
+i 0 j 30
+cos_p -0.026106605955933983 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371558701.jpg', 0)
+i 0 j 31
+cos_p 0.4572029685471462 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371559111.jpg', 0)
+i 0 j 32
+cos_p 0.10163185820508043 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371561741.jpg', 0)
+i 0 j 33
+cos_p -0.023462085081043933 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371570975.jpg', 0)
+i 0 j 34
+cos_p -0.018786744111115822 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371572577.jpg', 0)
+i 0 j 35
+cos_p 0.08812249586341468 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371579827.jpg', 0)
+i 0 j 36
+cos_p 0.08162205621790358 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371580901.jpg', 0)
+i 0 j 37
+cos_p 0.2400327567394292 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371581927.jpg', 0)
+i 0 j 38
+cos_p 0.27472798276390165 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371591637.jpg', 0)
+i 0 j 39
+cos_p 0.17896978831648955 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371595143.jpg', 0)
+i 0 j 40
+cos_p 0.20733235857979113 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371599183.jpg', 0)
+i 0 j 41
+cos_p 0.2629098781066125 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371605445.jpg', 0)
+i 0 j 42
+cos_p 0.35270381640310433 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371612229.jpg', 0)
+i 0 j 43
+cos_p 0.29692987802745296 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3371617769.jpg', 0)
+i 0 j 44
+cos_p 0.05365718437553311 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372163162.jpg', 0)
+i 0 j 45
+cos_p -0.05862023400769592 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372344377.jpg', 0)
+i 0 j 46
+cos_p -0.048734105115626515 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372347643.jpg', 0)
+i 0 j 47
+cos_p -0.04366945096190619 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372349645.jpg', 0)
+i 0 j 48
+cos_p -0.052486520617007475 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372351375.jpg', 0)
+i 0 j 49
+cos_p -0.001360143559272811 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372355044.jpg', 0)
+i 0 j 50
+cos_p -0.01294416812627749 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372356011.jpg', 0)
+i 0 j 51
+cos_p 0.2876962635128667 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372359135.jpg', 0)
+i 0 j 52
+cos_p 0.03380223145606022 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372360448.jpg', 0)
+i 0 j 53
+cos_p 0.07794039061660447 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372363869.jpg', 0)
+i 0 j 54
+cos_p -0.01438274809769654 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372365771.jpg', 0)
+i 0 j 55
+cos_p -0.016357131865736164 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372366059.jpg', 0)
+i 0 j 56
+cos_p -0.018136710522148512 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372366711.jpg', 0)
+i 0 j 57
+cos_p 0.014231329019475311 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372366907.jpg', 0)
+i 0 j 58
+cos_p 0.041221567580095056 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372367175.jpg', 0)
+i 0 j 59
+cos_p -0.004542732850379302 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372368603.jpg', 0)
+i 0 j 60
+cos_p -0.03159683793842584 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372372966.jpg', 0)
+i 0 j 61
+cos_p 0.025546334963106702 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372396798.jpg', 0)
+i 0 j 62
+cos_p 0.312534833981017 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372403892.jpg', 0)
+i 0 j 63
+cos_p 0.13748597062777365 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372408676.jpg', 0)
+i 0 j 64
+cos_p 0.24506326293748734 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372417598.jpg', 0)
+i 0 j 65
+cos_p 0.2984175076002663 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372423608.jpg', 0)
+i 0 j 66
+cos_p 0.2502795485805355 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372424938.jpg', 0)
+i 0 j 67
+cos_p 0.3598824883953974 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372437696.jpg', 0)
+i 0 j 68
+cos_p 0.24528677110435196 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372615987.jpg', 0)
+i 0 j 69
+cos_p 0.16618056903716905 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372616081.jpg', 0)
+i 0 j 70
+cos_p 0.13341565307117256 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372616181.jpg', 0)
+i 0 j 71
+cos_p 0.06246666086573308 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372616619.jpg', 0)
+i 0 j 72
+cos_p 0.0379115861214246 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372617181.jpg', 0)
+i 0 j 73
+cos_p 0.022620318466715864 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372617583.jpg', 0)
+i 0 j 74
+cos_p 0.11230768627473815 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372617913.jpg', 0)
+i 0 j 75
+cos_p 0.1931069097051708 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372618235.jpg', 0)
+i 0 j 76
+cos_p 0.010642081891223261 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372618361.jpg', 0)
+i 0 j 77
+cos_p 0.013476311547701233 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372618479.jpg', 0)
+i 0 j 78
+cos_p 0.03862211781982209 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372618939.jpg', 0)
+i 0 j 79
+cos_p 0.16459046122476054 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372619081.jpg', 0)
+i 0 j 80
+cos_p 0.18383048307076721 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372619433.jpg', 0)
+i 0 j 81
+cos_p 0.21195200515433402 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372619629.jpg', 0)
+i 0 j 82
+cos_p 0.12954133399490156 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372619785.jpg', 0)
+i 0 j 83
+cos_p 0.02945524162429113 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372619919.jpg', 0)
+i 0 j 84
+cos_p 0.03532263559507475 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372620077.jpg', 0)
+i 0 j 85
+cos_p 0.19064040856540596 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372620835.jpg', 0)
+i 0 j 86
+cos_p 0.03521551009711142 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372621299.jpg', 0)
+i 0 j 87
+cos_p 0.05025339004888215 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372621457.jpg', 0)
+i 0 j 88
+cos_p 0.031997114539426004 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372621727.jpg', 0)
+i 0 j 89
+cos_p 0.044872979623092425 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372622227.jpg', 0)
+i 0 j 90
+cos_p 0.2221823563471882 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372622575.jpg', 0)
+i 0 j 91
+cos_p 0.07795521640837831 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372622855.jpg', 0)
+i 0 j 92
+cos_p 0.19175211996042257 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372623133.jpg', 0)
+i 0 j 93
+cos_p 0.07874373173736855 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372623685.jpg', 0)
+i 0 j 94
+cos_p 0.05643616027612082 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372623803.jpg', 0)
+i 0 j 95
+cos_p 0.20992005946694747 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3372623929.jpg', 0)
+i 0 j 96
+cos_p -0.048422799302214645 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3373164064.jpg', 0)
+i 0 j 97
+cos_p -0.04662852237049241 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3373171510.jpg', 0)
+i 0 j 98
+cos_p -0.027530959956532264 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3373175580.jpg', 0)
+i 0 j 99
+cos_p 0.014146247309425534 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3373179506.jpg', 0)
+i 0 j 100
+cos_p 0.041305121827752644 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3373183344.jpg', 0)
+i 0 j 101
+cos_p -0.014842820714965739 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j ('./weight_0.914/cluster0/3373184278.jpg', 0)
+i 0 j 102
+cos_p 0.09265311868938336 label1 0 label2 0 file_i ('./weight_0.914/cluster0/3286772707.jpg', 0) file_j Traceback (most recent call last):
+  File "main_simsiam.py", line 434, in <module>
+    
+  File "main_simsiam.py", line 128, in main
+    mp.spawn(main_worker, nprocs=ngpus_per_node, args=(ngpus_per_node, args))
+  File "/home/vision/anaconda3/envs/minhyuk/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/vision/anaconda3/envs/minhyuk/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 198, in start_processes
+    while not context.join():
+  File "/home/vision/anaconda3/envs/minhyuk/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 140, in join
+    raise ProcessExitedException(
+torch.multiprocessing.spawn.ProcessExitedException: process 2 terminated with signal SIGKILL
+/home/vision/anaconda3/envs/minhyuk/lib/python3.8/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 154 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

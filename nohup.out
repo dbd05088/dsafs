@@ -1,0 +1,13 @@
+ngpus_per_node 6
+Traceback (most recent call last):
+  File "main_simsiam.py", line 436, in <module>
+    main()
+  File "main_simsiam.py", line 130, in main
+    mp.spawn(main_worker, nprocs=ngpus_per_node, args=(ngpus_per_node, args))
+  File "/home/vision/anaconda3/envs/minhyuk/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/vision/anaconda3/envs/minhyuk/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 198, in start_processes
+    while not context.join():
+  File "/home/vision/anaconda3/envs/minhyuk/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 140, in join
+    raise ProcessExitedException(
+torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with signal SIGKILL
